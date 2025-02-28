@@ -1,44 +1,93 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <link rel="stylesheet" href="https://example.com/css/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
+    <title>欢迎页面</title>
     <style>
-        body, html {
-            height: 100%;
+        /* 全局样式 */
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            color: white;
         }
+
         .container {
             text-align: center;
+            max-width: 800px;
+            padding: 2rem;
         }
-        .container h1 {
-            font-size: 3em;
-            color: #333;
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in-out;
         }
-        @media (max-width: 768px) {
-            .container h1 {
-                font-size: 2em;
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease-in-out 1s forwards;
+        }
+
+        .contact {
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 2s forwards;
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        @media (max-width: 480px) {
-            .container h1 {
-                font-size: 1.5em;
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>你好！</h1>
-<h1>欢迎来到测试页</h1>
-        <p>858866181@qq.com</p>
+        <h1>欢迎来到我的世界</h1>
+        <p>这里是一个充满创意与可能性的空间。我们致力于打造独特而富有意义的体验，期待与您共同探索无限可能。</p>
+        <div class="contact">
+            联系方式：<a href="mailto:hbtony@aliyun.com" style="color: #fff; text-decoration: none;">hbtony@aliyun.com</a>
+        </div>
     </div>
 </body>
-</html>
+</html> 
