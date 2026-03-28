@@ -1,319 +1,93 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNKE - 创意空间</title>
-  <meta name="description" content="VNKE 创意空间 - 让创意自由生长">
+  <title>VNKE - 商务精要</title>
   <style>
-    :root {
-      --primary: #ec4899;
-      --secondary: #8b5cf6;
-      --accent: #f97316;
-      --bg: #faf5f0;
-      --text: #2d2d2d;
-      --muted: #666;
-      --card-bg: #ffffff;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Georgia', 'PingFang SC', 'Microsoft YaHei', serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
+      background: #f8f9fa;
+      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
       padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    
-    .header {
+    h1 {
+      font-size: 3.5rem;
       text-align: center;
-      padding: 4rem 0;
+      margin-bottom: 1rem;
+      color: #212529;
       position: relative;
     }
-    
-    .header::before {
+    h1::after {
       content: '';
       position: absolute;
-      top: 0;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 60px;
       height: 3px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      background: #d4af37;
     }
-    
-    .logo {
-      font-size: 4rem;
-      font-weight: 300;
-      letter-spacing: 0.5em;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-family: 'Times New Roman', serif;
-    }
-    
-    .tagline {
-      font-size: 1.3rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 2rem;
-    }
-    
-    .date-stamp {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border: 1px solid var(--primary);
-      border-radius: 30px;
-      color: var(--primary);
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-    
-    .daily-thought {
-      background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      margin: 3rem 0;
-      position: relative;
-    }
-    
-    .daily-thought::before {
-      content: '❝';
-      position: absolute;
-      top: -10px;
-      left: 30px;
-      font-size: 4rem;
-      color: var(--primary);
-      opacity: 0.3;
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-    
-    .daily-thought p {
-      font-size: 1.2rem;
-      line-height: 2;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    
-    .daily-thought .author {
-      text-align: right;
-      color: var(--muted);
-      font-style: italic;
-      font-size: 1rem;
-    }
-    
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-      border-left: 3px solid var(--primary);
-    }
-    
-    .card:hover {
-      transform: translateX(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .card h3 {
-      font-size: 1.3rem;
-      color: var(--text);
-      margin-bottom: 0.8rem;
-      font-weight: 400;
-    }
-    
-    .card p {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-    
-    .diary-section {
-      background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 8px;
-      margin: 3rem 0;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    }
-    
-    .diary-section h2 {
+    .subtitle {
       font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
+      text-align: center;
+      opacity: 0.8;
+      margin-bottom: 3rem;
     }
-    
-    .diary-section p {
-      font-size: 1.1rem;
-      color: var(--text);
-      line-height: 2;
-      margin-bottom: 1rem;
+    .content {
+      background: white;
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
     }
-    
+    .highlight {
+      background: #f8f9fa;
+      border-left: 4px solid #d4af37;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+    .quote {
+      font-style: italic;
+      font-size: 1.4rem;
+      text-align: center;
+      margin: 2rem 0;
+      color: #555;
+    }
     .footer {
       text-align: center;
-      padding: 3rem 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      margin-top: 3rem;
+      opacity: 0.7;
+      padding-top: 3rem;
+      border-top: 1px solid #eee;
     }
-    
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
-      font-style: italic;
-    }
-    
-    .quote-decoration {
-      text-align: center;
-      font-size: 3rem;
-      color: var(--primary);
-      opacity: 0.1;
-      margin: 2rem 0;
-    }
-    
     @media (max-width: 768px) {
-      .logo { font-size: 2.5rem; letter-spacing: 0.3em; }
-      .daily-thought { padding: 2rem; }
-      .diary-section { padding: 2rem; }
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">VNKE</div>
-      <p class="tagline">让创意自由生长 · 让灵感自然绽放</p>
-      <div class="date-stamp" id="dateStamp"></div>
-    </header>
+  <h1>VNKE</h1>
+  <div class="subtitle">专业与价值的精要表达</div>
+
+  <div class="content">
+    <p>我们专注于提供清晰、专业的数字解决方案。VNKE 以简洁有力的方式呈现核心价值，助力商业决策与品牌建设。</p>
     
-    <div class="daily-thought">
-      <p id="dailyThought">加载中...</p>
-      <div class="author" id="thoughtAuthor"></div>
+    <div class="highlight">
+      <p>"专业性源于对细节的极致追求"</p>
     </div>
-    
-    <div class="quote-decoration">✦</div>
-    
-    <div class="diary-section">
-      <h2>📝 今日随笔</h2>
-      <div id="diaryEntry">
-        加载中...
-      </div>
+
+    <div class="quote">
+      <p>在信息过载的时代，清晰就是力量</p>
     </div>
-    
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>创意设计</h3>
-        <p>用设计讲述故事，用创意点亮生活</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">✍️</div>
-        <h3>文字创作</h3>
-        <p>每一个字都是思想的印记</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎭</div>
-        <h3>艺术表达</h3>
-        <p>艺术是灵魂的镜子</p>
-      </div>
-    </div>
-    
-    <div class="quote-decoration">✦</div>
-    
-    <footer class="footer">
-      <p>&copy; 2026 VNKE. 保留所有权利.</p>
-      <p style="margin-top: 1rem;">
-        联系：<a href="mailto:hbtony@aliyun.com">hbtony@aliyun.com</a>
-      </p>
-      <p style="margin-top: 0.5rem; font-size: 0.85rem;">每日更新 · 保持热爱 · 奔赴山海</p>
-    </footer>
   </div>
 
-  <script>
-    const now = new Date();
-    
-    // 日期显示
-    const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-    document.getElementById('dateStamp').textContent = now.toLocaleDateString('zh-CN', options);
-    
-    // 每日思考
-    const thoughts = [
-      {
-        thought: "生活不是等待风暴过去，而是学会在雨中起舞。每一个挑战都是成长的机会，每一次挫折都是通往成功的阶梯。",
-        author: "—— 今日感悟"
-      },
-      {
-        thought: "创意的本质不是创造新的事物，而是以新的眼光看待旧的事物。保持好奇心，世界永远充满惊喜。",
-        author: "—— 创意笔记"
-      },
-      {
-        thought: "真正的美不在于完美，而在于真实。接纳自己的不完美，才能找到内心的平静与力量。",
-        author: "—— 心灵随笔"
-      },
-      {
-        thought: "时间是最公平的裁判，它给每个人同样的 24 小时。如何度过每一天，决定了我们将成为什么样的人。",
-        author: "—— 时间哲学"
-      },
-      {
-        thought: "最好的创作来自于内心的真实表达。不要迎合他人，要做最真实的自己，因为那就是你最独特的地方。",
-        author: "—— 创作心语"
-      },
-      {
-        thought: "生活的美好往往藏在细节里。一朵花的绽放，一缕阳光的温暖，一次真诚的微笑——学会发现，学会感恩。",
-        author: "—— 生活片段"
-      },
-      {
-        thought: "每一次重新开始都是一次机会。过去无法改变，但未来掌握在自己手中。保持希望，继续前行。",
-        author: "—— 明日可期"
-      }
-    ];
-    
-    // 每日随笔内容
-    const diaryEntries = [
-      "今天是充满可能性的一天。清晨的阳光透过窗户洒在书桌上，提醒我新的开始总是令人期待。在这个快节奏的时代，我选择慢下来，用心感受生活的美好。",
-      "有时候，最好的创意来自于最平凡的日常。一杯咖啡的温度，一段音乐的旋律，一个路人的微笑——这些都是灵感的源泉。",
-      "写作是一种自我对话的方式。在文字中，我找到了内心的声音，也找到了与世界连接的方式。每一次落笔，都是一次心灵的旅行。",
-      "艺术没有边界，创意没有极限。当我们放下成见，拥抱多元，世界就会展现出它最丰富的一面。保持开放，保持好奇。",
-      "今天的天空格外蓝，心情也跟着明朗起来。生活中的小确幸往往不需要刻意寻找，它们就藏在日常的点点滴滴中。",
-      "创意工作需要耐心和坚持。有时候灵感会迟到，但永远不会缺席。保持热爱，持续耕耘，终会有收获的一天。",
-      "每个人都有自己的节奏和时区。不必与他人比较，只需专注于自己的成长。今天的我比昨天进步一点点，这就是最好的成绩。"
-    ];
-    
-    const today = now.getDate();
-    const thought = thoughts[today % thoughts.length];
-    const diary = diaryEntries[today % diaryEntries.length];
-    
-    document.getElementById('dailyThought').textContent = thought.thought;
-    document.getElementById('thoughtAuthor').textContent = thought.author;
-    document.getElementById('diaryEntry').textContent = diary;
-  </script>
+  <div class="footer">
+    © 2026 VNKE.io · 专业精要 · 持续价值
+  </div>
 </body>
 </html>
