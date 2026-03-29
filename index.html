@@ -1,93 +1,430 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNKE - 商务精要</title>
+  <title>VNKE - 一分钟商业智慧 | 让知识变得有趣</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="VNKE - 一分钟商业智慧。用娱乐化的方式传递商业洞察、职场智慧和创业故事。每天一分钟，让你的认知升级。">
+  <meta name="keywords" content="商业知识，职场智慧，创业故事，商业冷知识，一分钟课堂，知识娱乐，VNKE">
+  <meta name="author" content="VNKE">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="VNKE - 一分钟商业智慧">
+  <meta property="og:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vnke.com">
+  <meta property="og:image" content="https://vnke.com/assets/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VNKE - 一分钟商业智慧">
+  <meta name="twitter:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VNKE - 一分钟商业智慧",
+    "url": "https://vnke.com",
+    "description": "用娱乐化的方式传递商业洞察、职场智慧和创业故事",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vnke.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      background: #f8f9fa;
-      color: #333;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       line-height: 1.6;
-      padding: 4rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
+      color: var(--dark);
+      background: var(--light);
+      overflow-x: hidden;
     }
-    h1 {
-      font-size: 3.5rem;
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      margin-bottom: 1rem;
-      color: #212529;
+      padding: 2rem;
       position: relative;
+      overflow: hidden;
     }
-    h1::after {
+    
+    .hero::before {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: #d4af37;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+      background-size: 50px 50px;
+      animation: float 20s infinite linear;
     }
-    .subtitle {
-      font-size: 1.8rem;
-      text-align: center;
-      opacity: 0.8;
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    .hero p {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    
+    .hero .tagline {
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
       margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease 0.4s both;
     }
-    .content {
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
       background: white;
-      border-radius: 12px;
-      padding: 3rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.8s ease 0.6s both;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Daily Quote */
+    .daily-quote {
+      background: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 3;
+      margin-top: -3rem;
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .quote-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .quote-author {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    
+    /* Content Grid */
+    .content-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-bottom: 4rem;
     }
-    .highlight {
-      background: #f8f9fa;
-      border-left: 4px solid #d4af37;
+    
+    .card {
+      background: white;
+      border-radius: 15px;
       padding: 2rem;
-      margin: 2.5rem 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
-    .quote {
-      font-style: italic;
-      font-size: 1.4rem;
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+    }
+    
+    .card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .card-tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+    
+    /* Random Card Button */
+    .random-section {
       text-align: center;
-      margin: 2rem 0;
-      color: #555;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
-    .footer {
+    
+    .random-btn {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .random-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
       text-align: center;
-      opacity: 0.7;
-      padding-top: 3rem;
-      border-top: 1px solid #eee;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
     }
+    
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-text {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .social-link:hover {
+      transform: scale(1.2);
+      color: var(--accent);
+    }
+    
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      .subtitle { font-size: 1.4rem; }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>VNKE</h1>
-  <div class="subtitle">专业与价值的精要表达</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>💡 VNKE</h1>
+      <p>一分钟商业智慧</p>
+      <p class="tagline">用娱乐化的方式，让知识变得有趣</p>
+      <a href="#content" class="cta-button">开始探索</a>
+    </div>
+  </section>
 
-  <div class="content">
-    <p>我们专注于提供清晰、专业的数字解决方案。VNKE 以简洁有力的方式呈现核心价值，助力商业决策与品牌建设。</p>
+  <!-- Daily Quote -->
+  <section class="daily-quote">
+    <div class="quote-text" id="daily-quote">"在信息过载的时代，清晰就是力量。"</div>
+    <div class="quote-author">— 每日商业金句</div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="content-section" id="content">
+    <h2 class="section-title">🔥 热门商业冷知识</h2>
+    <p class="section-subtitle">这些你可能不知道的商界趣闻，让你成为聚会中的话题王者</p>
     
-    <div class="highlight">
-      <p>"专业性源于对细节的极致追求"</p>
+    <div class="grid" id="facts-grid">
+      <!-- Facts will be loaded by JavaScript -->
     </div>
+  </section>
 
-    <div class="quote">
-      <p>在信息过载的时代，清晰就是力量</p>
+  <!-- Wisdom Section -->
+  <section class="content-section" style="background: #f8fafc;">
+    <h2 class="section-title">💡 一分钟职场智慧</h2>
+    <p class="section-subtitle">每天一分钟，让你的职场认知升级</p>
+    
+    <div class="grid" id="wisdom-grid">
+      <!-- Wisdom cards will be loaded by JavaScript -->
     </div>
-  </div>
+  </section>
 
-  <div class="footer">
-    © 2026 VNKE.com · 专业精要 · 持续价值
-  </div>
-</body>
-</html>
+  <!-- Random Card Section -->
+  <section class="random-section">
+    <h2 class="section-title">🎲 随机知识卡片</h2>
+    <p class="section-subtitle">不知道看什么？点击获取随机惊喜！</p>
+    <button class="random-btn" onclick="showRandomCard()">🎯 给我来个惊喜</button>
+    <div id="random-card" style="margin-top: 2rem; display: none;"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">VNKE</div>
+      <p class="footer-text">让知识变得有趣，让商业变得简单</p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="微信">💬</a>
+        <a href="#" class="social-link" title="微博">🌐</a>
+        <a href="#" class="social-link" title="LinkedIn">💼</a>
+      </div>
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+        © 2026 VNKE. 保留所有权利。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Business Facts Data
+    const businessFacts = [
+      {
+        icon: "📱",
+        title: "iPhone 的秘密",
+        content: "苹果公司的 iPhone 在 2007 年发布时，乔布斯故意把价格定在 499 美元，而不是 500 美元。这个'心理定价'策略让产品看起来更便宜，最终大获成功。",
+        tag: "定价策略"
+      },
+      {
+        icon: "☕",
+        title: "星巴克的魔法",
+        content: "星巴克的'第三空间'概念不是他们发明的，但他们把它做到了极致。现在，星巴克全球门店超过 3 万家，年收入超 300 亿美元。",
+        tag: "品牌定位"
+      },
+      {
+        icon: "
