@@ -1,430 +1,147 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNKE - 一分钟商业智慧 | 让知识变得有趣</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="VNKE - 一分钟商业智慧。用娱乐化的方式传递商业洞察、职场智慧和创业故事。每天一分钟，让你的认知升级。">
-  <meta name="keywords" content="商业知识，职场智慧，创业故事，商业冷知识，一分钟课堂，知识娱乐，VNKE">
-  <meta name="author" content="VNKE">
-  
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="VNKE - 一分钟商业智慧">
-  <meta property="og:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vnke.com">
-  <meta property="og:image" content="https://vnke.com/assets/og-image.jpg">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VNKE - 一分钟商业智慧">
-  <meta name="twitter:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "VNKE - 一分钟商业智慧",
-    "url": "https://vnke.com",
-    "description": "用娱乐化的方式传递商业洞察、职场智慧和创业故事",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://vnke.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #10b981;
-      --accent: #f59e0b;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background: var(--light);
-      overflow-x: hidden;
-    }
-    
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      background: var(--gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
-      background-size: 50px 50px;
-      animation: float 20s infinite linear;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-100px) rotate(360deg); }
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-    }
-    
-    .hero h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      animation: fadeInUp 0.8s ease;
-    }
-    
-    .hero p {
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease 0.2s both;
-    }
-    
-    .hero .tagline {
-      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-      color: rgba(255,255,255,0.8);
-      font-style: italic;
-      margin-bottom: 3rem;
-      animation: fadeInUp 0.8s ease 0.4s both;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: white;
-      color: var(--primary);
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      animation: fadeInUp 0.8s ease 0.6s both;
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Daily Quote */
-    .daily-quote {
-      background: white;
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 3;
-      margin-top: -3rem;
-      border-radius: 20px 20px 0 0;
-    }
-    
-    .quote-text {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-    
-    .quote-author {
-      color: var(--gray);
-      font-size: 1rem;
-    }
-    
-    /* Content Grid */
-    .content-section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--dark);
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--gray);
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
-    }
-    
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-    
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: var(--gradient);
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: var(--dark);
-    }
-    
-    .card p {
-      color: var(--gray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    .card-tag {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-top: 1rem;
-      font-weight: 500;
-    }
-    
-    /* Random Card Button */
-    .random-section {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    }
-    
-    .random-btn {
-      background: var(--gradient);
-      color: white;
-      border: none;
-      padding: 1rem 3rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    }
-    
-    .random-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 3rem 2rem;
-      margin-top: 4rem;
-    }
-    
-    .footer-content {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .footer-logo {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-text {
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 2rem;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .social-link {
-      color: white;
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    
-    .social-link:hover {
-      transform: scale(1.2);
-      color: var(--accent);
-    }
-    
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNKE - 一分钟商业智慧</title>
+    <meta name="description" content="VNKE - 一分钟商业智慧。用娱乐化的方式传递商业洞察、职场智慧和创业故事。每天一分钟，让你的认知升级。">
+    <meta name="keywords" content="商业知识，职场智慧，创业故事，商业冷知识，一分钟课堂，知识娱乐，VNKE">
+    <meta name="author" content="VNKE">
+    <meta property="og:title" content="VNKE - 一分钟商业智慧">
+    <meta property="og:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vnke.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+    <style>
+        :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #10b981; --accent: #f59e0b; --dark: #1e293b; --light: #f8fafc; --gray: #64748b; --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); overflow-x: hidden; }
+        .hero { min-height: 100vh; background: var(--gradient); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>'); background-size: 50px 50px; animation: float 20s infinite linear; }
+        @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-100px) rotate(360deg); } }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: white; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); animation: fadeInUp 0.8s ease; }
+        .hero p { font-size: clamp(1.1rem, 3vw, 1.5rem); color: rgba(255,255,255,0.9); margin-bottom: 2rem; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero .tagline { font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.8); font-style: italic; margin-bottom: 3rem; animation: fadeInUp 0.8s ease 0.4s both; }
+        .cta-button { display: inline-block; padding: 1rem 2.5rem; background: white; color: var(--primary); font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: fadeInUp 0.8s ease 0.6s both; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .daily-quote { background: white; padding: 4rem 2rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
+        .quote-text { font-size: 1.5rem; font-style: italic; color: var(--dark); margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .quote-author { color: var(--gray); font-size: 1rem; }
+        .content-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark); }
+        .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; font-size: 1.1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .card { background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--gradient); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--dark); }
+        .card p { color: var(--gray); font-size: 0.95rem; line-height: 1.6; }
+        .card-tag { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.8rem; margin-top: 1rem; font-weight: 500; }
+        .random-section { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .random-btn { background: var(--gradient); color: white; border: none; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+        .random-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
+        #random-card { margin-top: 2rem; display: none; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-logo { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+        .footer-text { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-link { color: white; font-size: 1.5rem; transition: all 0.3s ease; text-decoration: none; }
+        .social-link:hover { transform: scale(1.2); color: var(--accent); }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .grid { grid-template-columns: 1fr; } .quote-text { font-size: 1.2rem; } }
+    </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>💡 VNKE</h1>
-      <p>一分钟商业智慧</p>
-      <p class="tagline">用娱乐化的方式，让知识变得有趣</p>
-      <a href="#content" class="cta-button">开始探索</a>
-    </div>
-  </section>
-
-  <!-- Daily Quote -->
-  <section class="daily-quote">
-    <div class="quote-text" id="daily-quote">"在信息过载的时代，清晰就是力量。"</div>
-    <div class="quote-author">— 每日商业金句</div>
-  </section>
-
-  <!-- Content Section -->
-  <section class="content-section" id="content">
-    <h2 class="section-title">🔥 热门商业冷知识</h2>
-    <p class="section-subtitle">这些你可能不知道的商界趣闻，让你成为聚会中的话题王者</p>
-    
-    <div class="grid" id="facts-grid">
-      <!-- Facts will be loaded by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Wisdom Section -->
-  <section class="content-section" style="background: #f8fafc;">
-    <h2 class="section-title">💡 一分钟职场智慧</h2>
-    <p class="section-subtitle">每天一分钟，让你的职场认知升级</p>
-    
-    <div class="grid" id="wisdom-grid">
-      <!-- Wisdom cards will be loaded by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Random Card Section -->
-  <section class="random-section">
-    <h2 class="section-title">🎲 随机知识卡片</h2>
-    <p class="section-subtitle">不知道看什么？点击获取随机惊喜！</p>
-    <button class="random-btn" onclick="showRandomCard()">🎯 给我来个惊喜</button>
-    <div id="random-card" style="margin-top: 2rem; display: none;"></div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">VNKE</div>
-      <p class="footer-text">让知识变得有趣，让商业变得简单</p>
-      <div class="social-links">
-        <a href="#" class="social-link" title="微信">💬</a>
-        <a href="#" class="social-link" title="微博">🌐</a>
-        <a href="#" class="social-link" title="LinkedIn">💼</a>
-      </div>
-      <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
-        © 2026 VNKE. 保留所有权利。
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    // Business Facts Data
-    const businessFacts = [
-      {
-        icon: "📱",
-        title: "iPhone 的秘密",
-        content: "苹果公司的 iPhone 在 2007 年发布时，乔布斯故意把价格定在 499 美元，而不是 500 美元。这个'心理定价'策略让产品看起来更便宜，最终大获成功。",
-        tag: "定价策略"
-      },
-      {
-        icon: "☕",
-        title: "星巴克的魔法",
-        content: "星巴克的'第三空间'概念不是他们发明的，但他们把它做到了极致。现在，星巴克全球门店超过 3 万家，年收入超 300 亿美元。",
-        tag: "品牌定位"
-      },
-      {
-        icon: "
+    <section class="hero">
+        <div class="hero-content">
+            <h1>💡 VNKE</h1>
+            <p>一分钟商业智慧</p>
+            <p class="tagline">用娱乐化的方式，让知识变得有趣</p>
+            <a href="#content" class="cta-button">开始探索</a>
+        </div>
+    </section>
+    <section class="daily-quote">
+        <div class="quote-text" id="daily-quote">"在信息过载的时代，清晰就是力量。"</div>
+        <div class="quote-author">— 每日商业金句</div>
+    </section>
+    <section class="content-section" id="content">
+        <h2 class="section-title">🔥 热门商业冷知识</h2>
+        <p class="section-subtitle">这些你可能不知道的商界趣闻，让你成为聚会中的话题王者</p>
+        <div class="grid" id="facts-grid"></div>
+    </section>
+    <section class="content-section" style="background: #f8fafc;">
+        <h2 class="section-title">💡 一分钟职场智慧</h2>
+        <p class="section-subtitle">每天一分钟，让你的职场认知升级</p>
+        <div class="grid" id="wisdom-grid"></div>
+    </section>
+    <section class="random-section">
+        <h2 class="section-title">🎲 随机知识卡片</h2>
+        <p class="section-subtitle">不知道看什么？点击获取随机惊喜！</p>
+        <button class="random-btn" onclick="showRandomCard()">🎯 给我来个惊喜</button>
+        <div id="random-card" style="margin-top: 2rem; display: none;"></div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">VNKE</div>
+            <p class="footer-text">让知识变得有趣，让商业变得简单</p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="微信">💬</a>
+                <a href="#" class="social-link" title="微博">🌐</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+            </div>
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">© 2026 VNKE. 保留所有权利。</p>
+        </div>
+    </footer>
+    <script>
+        const businessFacts = [
+            { icon: "📱", title: "iPhone 的秘密", content: "苹果公司的 iPhone 在 2007 年发布时，乔布斯故意把价格定在 499 美元，而不是 500 美元。这个'心理定价'策略让产品看起来更便宜，最终大获成功。", tag: "定价策略" },
+            { icon: "☕", title: "星巴克的魔法", content: "星巴克的'第三空间'概念不是他们发明的，但他们把它做到了极致。现在，星巴克全球门店超过 3 万家，年收入超 300 亿美元。", tag: "品牌定位" },
+            { icon: "👟", title: "耐克的钩子", content: "耐克那个著名的 Swoosh 标志，是 1971 年由一位设计系学生设计的，当时只花了她 35 美元。现在这个标志价值超过 240 亿美元。", tag: "品牌价值" },
+            { icon: "🍔", title: "麦当劳的地产商", content: "麦当劳其实是一家房地产公司，而不是快餐店。他们的真正利润来源是门店租金，而不是汉堡。", tag: "商业模式" },
+            { icon: "🎮", title: "任天堂的转型", content: "任天堂最初是家扑克牌公司，成立于 1889 年。直到 1970 年代才开始做电子游戏，现在市值超过 600 亿美元。", tag: "企业转型" },
+            { icon: "🚗", title: "特斯拉的预售", content: "特斯拉 Model 3 在 2016 年发布时，24 小时内收到了 32.5 万份预订，预收款超过 20 亿美元。这是史上最大的预售之一。", tag: "营销策略" },
+            { icon: "📺", title: "Netflix 的赌注", content: "2013 年，Netflix 在没有试播集的情况下，直接订购了 2 季《纸牌屋》，花费 1 亿美元。结果大获成功，开启了流媒体原创内容时代。", tag: "内容战略" },
+            { icon: "🔍", title: "谷歌的免费策略", content: "谷歌的搜索服务完全免费，但通过广告每年赚取超过 1500 亿美元。免费+广告模式改变了整个互联网行业。", tag: "盈利模式" },
+            { icon: "🛒", title: "亚马逊的飞轮", content: "亚马逊的'飞轮效应'：更低价格→更多客户→更多卖家→更低的成本结构→更低价格。这个循环让亚马逊成为万亿巨头。", tag: "增长策略" },
+            { icon: "📱", title: "微信的超级应用", content: "微信在中国有超过 12 亿用户，集社交、支付、购物、打车、外卖于一体。一个 App 搞定所有生活需求。", tag: "生态战略" }
+        ];
+        const wisdomCards = [
+            { icon: "💼", title: "谈判技巧", content: "谈判时，先让对方说出数字。谁先报价，谁就处于劣势。让对方先亮底牌，你才能掌握主动权。", tag: "沟通" },
+            { icon: "⏰", title: "时间管理", content: "用'两分钟法则'：如果一件事能在两分钟内完成，现在就做。不要拖延，立即执行。", tag: "效率" },
+            { icon: "🎯", title: "目标设定", content: "目标要具体、可衡量、可实现、相关性强、有时限（SMART 原则）。模糊的目标=模糊的结果。", tag: "规划" },
+            { icon: "🤝", title: "人脉建设", content: "真正的人脉不是认识多少人，而是有多少人认可你的价值。先给别人价值，别人自然会回报你。", tag: "社交" },
+            { icon: "📊", title: "数据思维", content: "做决策时，用数据说话，而不是凭感觉。数据不会撒谎，但会告诉你真相。", tag: "分析" },
+            { icon: "🔄", title: "持续学习", content: "每天花 30 分钟学习新技能。一年下来，你会比 90% 的人领先。学习是最好的人力资本投资。", tag: "成长" }
+        ];
+        function renderCards(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="card-icon">${item.icon}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.content}</p>
+                    <span class="card-tag">${item.tag}</span>
+                </div>
+            `).join('');
+        }
+        function showRandomCard() {
+            const allCards = [...businessFacts, ...wisdomCards];
+            const random = allCards[Math.floor(Math.random() * allCards.length)];
+            const card = document.getElementById('random-card');
+            card.innerHTML =            `<div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
+                <div class="card-icon">${random.icon}</div>
+                <h3>${random.title}</h3>
+                <p>${random.content}</p>
+                <span class="card-tag">${random.tag}</span>
+            </div>`;
+            card.style.display = 'block';
+        }
+        renderCards(businessFacts, 'facts-grid');
+        renderCards(wisdomCards, 'wisdom-grid');
+    </script>
+</body>
+</html>
