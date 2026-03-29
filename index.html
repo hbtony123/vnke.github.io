@@ -30,17 +30,17 @@
         .daily-quote { background: white; padding: 4rem 2rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
         .quote-text { font-size: 1.5rem; font-style: italic; color: var(--dark); margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
         .quote-author { color: var(--gray); font-size: 1rem; }
-        .content-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark); }
-        .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 3rem; font-size: 1.1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-        .card { background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .content-section { padding: 2rem 1.5rem; max-width: 900px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 0.8rem; color: var(--dark); }
+        .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .card { background: white; border-radius: 10px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s ease; cursor: pointer; position: relative; overflow: hidden; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--gradient); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--dark); }
-        .card p { color: var(--gray); font-size: 0.95rem; line-height: 1.6; }
-        .card-tag { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.8rem; margin-top: 1rem; font-weight: 500; }
+        .card-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+        .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--dark); }
+        .card p { color: var(--gray); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.6rem; }
+        .card-tag { display: inline-block; padding: 0.2rem 0.6rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 12px; font-size: 0.7rem; font-weight: 500; }
         .random-section { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
         .random-btn { background: var(--gradient); color: white; border: none; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
         .random-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
@@ -97,29 +97,56 @@
         </div>
     </footer>
     <script>
+        // 扩充商业冷知识池（20+ 条）
         const businessFacts = [
-            { icon: "📱", title: "iPhone 的秘密", content: "苹果公司的 iPhone 在 2007 年发布时，乔布斯故意把价格定在 499 美元，而不是 500 美元。这个'心理定价'策略让产品看起来更便宜，最终大获成功。", tag: "定价策略" },
-            { icon: "☕", title: "星巴克的魔法", content: "星巴克的'第三空间'概念不是他们发明的，但他们把它做到了极致。现在，星巴克全球门店超过 3 万家，年收入超 300 亿美元。", tag: "品牌定位" },
-            { icon: "👟", title: "耐克的钩子", content: "耐克那个著名的 Swoosh 标志，是 1971 年由一位设计系学生设计的，当时只花了她 35 美元。现在这个标志价值超过 240 亿美元。", tag: "品牌价值" },
-            { icon: "🍔", title: "麦当劳的地产商", content: "麦当劳其实是一家房地产公司，而不是快餐店。他们的真正利润来源是门店租金，而不是汉堡。", tag: "商业模式" },
-            { icon: "🎮", title: "任天堂的转型", content: "任天堂最初是家扑克牌公司，成立于 1889 年。直到 1970 年代才开始做电子游戏，现在市值超过 600 亿美元。", tag: "企业转型" },
-            { icon: "🚗", title: "特斯拉的预售", content: "特斯拉 Model 3 在 2016 年发布时，24 小时内收到了 32.5 万份预订，预收款超过 20 亿美元。这是史上最大的预售之一。", tag: "营销策略" },
-            { icon: "📺", title: "Netflix 的赌注", content: "2013 年，Netflix 在没有试播集的情况下，直接订购了 2 季《纸牌屋》，花费 1 亿美元。结果大获成功，开启了流媒体原创内容时代。", tag: "内容战略" },
-            { icon: "🔍", title: "谷歌的免费策略", content: "谷歌的搜索服务完全免费，但通过广告每年赚取超过 1500 亿美元。免费+广告模式改变了整个互联网行业。", tag: "盈利模式" },
-            { icon: "🛒", title: "亚马逊的飞轮", content: "亚马逊的'飞轮效应'：更低价格→更多客户→更多卖家→更低的成本结构→更低价格。这个循环让亚马逊成为万亿巨头。", tag: "增长策略" },
-            { icon: "📱", title: "微信的超级应用", content: "微信在中国有超过 12 亿用户，集社交、支付、购物、打车、外卖于一体。一个 App 搞定所有生活需求。", tag: "生态战略" }
+            { icon: "📱", title: "iPhone 的秘密", content: "乔布斯把 iPhone 定价 499 美元而非 500 美元，利用'左位效应'让价格看起来更便宜。", tag: "定价策略" },
+            { icon: "☕", title: "星巴克的魔法", content: "星巴克全球 3 万家门店，年收入超 300 亿，靠的是'第三空间'概念而非咖啡本身。", tag: "品牌定位" },
+            { icon: "👟", title: "耐克的钩子", content: "耐克的 Swoosh 标志当年只花了 35 美元，如今品牌价值超 240 亿美元。", tag: "品牌价值" },
+            { icon: "🍔", title: "麦当劳的地产商", content: "麦当劳本质是房地产公司，利润主要来自门店租金而非汉堡。", tag: "商业模式" },
+            { icon: "🎮", title: "任天堂的转型", content: "任天堂 1889 年做扑克牌起家，1970 年代转型游戏，如今市值超 600 亿。", tag: "企业转型" },
+            { icon: "🚗", title: "特斯拉的预售", content: "Model 3 发布 24 小时获 32.5 万预订，预收款超 20 亿美元，史上最大预售之一。", tag: "营销策略" },
+            { icon: "📺", title: "Netflix 的赌注", content: "Netflix 无试播集直接投 1 亿订 2 季《纸牌屋》，开启流媒体原创时代。", tag: "内容战略" },
+            { icon: "🔍", title: "谷歌的免费策略", content: "谷歌搜索免费，靠广告年赚 1500 亿，'免费+广告'模式改变互联网。", tag: "盈利模式" },
+            { icon: "🛒", title: "亚马逊的飞轮", content: "低价→多客户→多卖家→低成本→更低价的飞轮效应，造就万亿巨头。", tag: "增长策略" },
+            { icon: "📱", title: "微信的超级应用", content: "微信 12 亿用户，集社交、支付、购物、打车于一体，一个 App 搞定生活。", tag: "生态战略" },
+            { icon: "💰", title: "巴菲特的复利", content: "巴菲特 99% 的财富在 50 岁后获得，复利+长期主义是财富密码。", tag: "投资智慧" },
+            { icon: "📦", title: "宜家的平板包装", content: "宜家平板包装降低 70% 运输成本，让用户自己组装，价格低一半。", tag: "成本控制" },
+            { icon: "🎬", title: "迪士尼的 IP 帝国", content: "迪士尼靠 IP 授权和衍生品赚钱，电影只是入口，授权收入超票房。", tag: "IP 运营" },
+            { icon: "🚀", title: "SpaceX 的回收", content: "SpaceX 火箭回收技术将发射成本降低 90%，彻底改变航天业。", tag: "技术创新" },
+            { icon: "📱", title: "拼多多的下沉", content: "拼多多瞄准下沉市场，用社交裂变 3 年上市，市值超京东。", tag: "市场定位" },
+            { icon: "🎧", title: "Spotify 的订阅", content: "Spotify 用订阅制颠覆音乐产业，用户付费意愿远超想象。", tag: "订阅经济" },
+            { icon: "🏨", title: "Airbnb 的轻资产", content: "Airbnb 无一间房，靠平台模式成为全球最大酒店集团。", tag: "平台经济" },
+            { icon: "📱", title: "TikTok 的算法", content: "TikTok 推荐算法让用户'停不下来'，18 个月用户破 10 亿。", tag: "算法驱动" },
+            { icon: "🛍️", title: "Costco 的会员", content: "Costco 商品毛利仅 14%，靠会员费赚钱，续费率超 90%。", tag: "会员经济" },
+            { icon: "🎮", title: "索尼的生态", content: "索尼 PlayStation 硬件不赚钱，靠游戏销售和订阅盈利。", tag: "生态闭环" }
         ];
+        // 扩充职场智慧池（15+ 条）
         const wisdomCards = [
-            { icon: "💼", title: "谈判技巧", content: "谈判时，先让对方说出数字。谁先报价，谁就处于劣势。让对方先亮底牌，你才能掌握主动权。", tag: "沟通" },
-            { icon: "⏰", title: "时间管理", content: "用'两分钟法则'：如果一件事能在两分钟内完成，现在就做。不要拖延，立即执行。", tag: "效率" },
-            { icon: "🎯", title: "目标设定", content: "目标要具体、可衡量、可实现、相关性强、有时限（SMART 原则）。模糊的目标=模糊的结果。", tag: "规划" },
-            { icon: "🤝", title: "人脉建设", content: "真正的人脉不是认识多少人，而是有多少人认可你的价值。先给别人价值，别人自然会回报你。", tag: "社交" },
-            { icon: "📊", title: "数据思维", content: "做决策时，用数据说话，而不是凭感觉。数据不会撒谎，但会告诉你真相。", tag: "分析" },
-            { icon: "🔄", title: "持续学习", content: "每天花 30 分钟学习新技能。一年下来，你会比 90% 的人领先。学习是最好的人力资本投资。", tag: "成长" }
+            { icon: "💼", title: "谈判技巧", content: "谈判时让对方先报价，谁先亮底牌谁被动。掌握主动权的关键是'后发制人'。", tag: "沟通" },
+            { icon: "⏰", title: "时间管理", content: "'两分钟法则'：2 分钟内能做的事，立刻做，别拖延。", tag: "效率" },
+            { icon: "🎯", title: "目标设定", content: "SMART 原则：具体、可衡量、可实现、相关性强、有时限。模糊目标=模糊结果。", tag: "规划" },
+            { icon: "🤝", title: "人脉建设", content: "人脉不是认识多少人，而是多少人认可你的价值。先给价值，再求回报。", tag: "社交" },
+            { icon: "📊", title: "数据思维", content: "决策用数据说话，别凭感觉。数据不会撒谎，但会告诉你真相。", tag: "分析" },
+            { icon: "🔄", title: "持续学习", content: "每天 30 分钟学习新技能，一年下来比 90% 的人领先。学习是最好的人力资本投资。", tag: "成长" },
+            { icon: "💡", title: "创新思维", content: "创新不是发明新东西，而是用旧元素组合出新价值。跨界思维是关键。", tag: "创新" },
+            { icon: "🎭", title: "情绪管理", content: "情绪是信号不是敌人。识别情绪背后的需求，才能有效管理。", tag: "情商" },
+            { icon: "📝", title: "向上管理", content: "向上管理不是讨好，而是让上级知道你的价值和困难，争取资源。", tag: "职场" },
+            { icon: "🎪", title: "精力管理", content: "管理精力而非时间。找到你的黄金时段，做最重要的事。", tag: "效率" },
+            { icon: "🔑", title: "关键决策", content: "重大决策用'10-10-10 法则'：10 分钟、10 个月、10 年后怎么看这个决定？", tag: "决策" },
+            { icon: "🎯", title: "专注力", content: "一次只做一件事。多任务处理是效率杀手，专注才是王道。", tag: "效率" },
+            { icon: "🤔", title: "批判性思维", content: "别轻易接受信息，问'证据是什么？''逻辑成立吗？'培养独立思考。", tag: "思维" },
+            { icon: "🌟", title: "个人品牌", content: "你的个人品牌是你离开岗位后别人怎么评价你。让口碑成为你的资产。", tag: "品牌" },
+            { icon: "🚀", title: "快速试错", content: "小步快跑，快速试错。完美是完成的天敌，先做出来再优化。", tag: "执行" }
         ];
-        function renderCards(data, containerId) {
+        // 随机抽取指定数量的不重复项
+        function getRandomItems(arr, count) {
+            const shuffled = [...arr].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+        function renderCards(data, containerId, count) {
             const container = document.getElementById(containerId);
-            container.innerHTML = data.map(item => `
+            const selected = getRandomItems(data, count);
+            container.innerHTML = selected.map(item => `
                 <div class="card">
                     <div class="card-icon">${item.icon}</div>
                     <h3>${item.title}</h3>
@@ -132,7 +159,8 @@
             const allCards = [...businessFacts, ...wisdomCards];
             const random = allCards[Math.floor(Math.random() * allCards.length)];
             const card = document.getElementById('random-card');
-            card.innerHTML =            `<div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
+            card.style.display = 'block';
+            card.innerHTML = `<div class="card" style="max-width: 400px; margin: 0 auto; text-align: left;">
                 <div class="card-icon">${random.icon}</div>
                 <h3>${random.title}</h3>
                 <p>${random.content}</p>
@@ -140,8 +168,28 @@
             </div>`;
             card.style.display = 'block';
         }
-        renderCards(businessFacts, 'facts-grid');
-        renderCards(wisdomCards, 'wisdom-grid');
+    </script>
+</body>
+</html> `<div class="card" style="max-width: 400px; margin: 0 auto; text-align: left;">
+                <div class="card-icon">${random.icon}</div>
+                <h3>${random.title}</h3>
+                <p>${random.content}</p>
+                <span class="card-tag">${random.tag}</span>
+            </div>`;
+        }
+    </script>
+</body>
+</html>            `<div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
+                <div class="card-icon">${random.icon}</div>
+                <h3>${random.title}</h3>
+                <p>${random.content}</p>
+                <span class="card-tag">${random.tag}</span>
+            </div>`;
+            card.style.display = 'block';
+        }
+        // 每次刷新显示 3 个随机内容
+        renderCards(businessFacts, 'facts-grid', 3);
+        renderCards(wisdomCards, 'wisdom-grid', 3);
     </script>
 </body>
 </html>
