@@ -40,6 +40,23 @@
         .random-btn { background: var(--gradient); color: white; border: none; padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
         .random-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
         #random-card { margin-top: 1.5rem; display: none; }
+        /* 详情模态框 */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+        .modal-content { background: white; border-radius: 15px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray); }
+        .modal-header { margin-bottom: 1.5rem; }
+        .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .modal-title { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--dark); }
+        .modal-tag { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 15px; font-size: 0.9rem; font-weight: 500; }
+        .modal-section { margin-bottom: 2rem; }
+        .modal-section h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--dark); border-bottom: 2px solid var(--primary); padding-bottom: 0.3rem; }
+        .modal-section p { color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
+        .case-list { list-style: none; padding-left: 0; }
+        .case-list li { background: #f8fafc; border-left: 4px solid var(--primary); padding: 1rem; margin-bottom: 1rem; border-radius: 0 8px 8px 0; }
+        .case-list strong { color: var(--dark); }
+        .related-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .related-tag { padding: 0.3rem 0.8rem; background: #f1f5f9; color: var(--gray); border-radius: 12px; font-size: 0.8rem; }
+        @media (max-width: 768px) { .modal-content { padding: 1.5rem; } .modal-title { font-size: 1.5rem; } }
         footer { background: var(--dark); color: white; text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; }
         .footer-content { max-width: 600px; margin: 0 auto; }
         .footer-logo { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.8rem; }
@@ -91,48 +108,171 @@
             <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">© 2026 VNKE. 保留所有权利。</p>
         </div>
     </footer>
+    
+    <!-- 详情模态框 -->
+    <div id="detail-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modal-icon"></div>
+                <h1 class="modal-title" id="modal-title"></h1>
+                <span class="modal-tag" id="modal-tag"></span>
+            </div>
+            
+            <div class="modal-section">
+                <h3>📖 详细解释</h3>
+                <p id="modal-content"></p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>🎯 实战案例</h3>
+                <ul class="case-list" id="modal-cases"></ul>
+            </div>
+            
+            <div class="modal-section">
+                <h3>🔗 相关知识点</h3>
+                <div class="related-tags" id="modal-related"></div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        // 商业冷知识池（20条）
+        // 商业冷知识池（带详细信息和案例）
         const businessFacts = [
-            { icon: "📱", title: "iPhone 的秘密", content: "乔布斯把 iPhone 定价 499 美元而非 500 美元，利用'左位效应'让价格看起来更便宜。", tag: "定价策略" },
-            { icon: "☕", title: "星巴克的魔法", content: "星巴克全球 3 万家门店，年收入超 300 亿，靠的是'第三空间'概念而非咖啡本身。", tag: "品牌定位" },
-            { icon: "👟", title: "耐克的钩子", content: "耐克的 Swoosh 标志当年只花了 35 美元，如今品牌价值超 240 亿美元。", tag: "品牌价值" },
-            { icon: "🍔", title: "麦当劳的地产商", content: "麦当劳本质是房地产公司，利润主要来自门店租金而非汉堡。", tag: "商业模式" },
-            { icon: "🎮", title: "任天堂的转型", content: "任天堂 1889 年做扑克牌起家，1970 年代转型游戏，如今市值超 600 亿。", tag: "企业转型" },
-            { icon: "🚗", title: "特斯拉的预售", content: "Model 3 发布 24 小时获 32.5 万预订，预收款超 20 亿美元，史上最大预售之一。", tag: "营销策略" },
-            { icon: "📺", title: "Netflix 的赌注", content: "Netflix 无试播集直接投 1 亿订 2 季《纸牌屋》，开启流媒体原创时代。", tag: "内容战略" },
-            { icon: "🔍", title: "谷歌的免费策略", content: "谷歌搜索免费，靠广告年赚 1500 亿，'免费+广告'模式改变互联网。", tag: "盈利模式" },
-            { icon: "🛒", title: "亚马逊的飞轮", content: "低价→多客户→多卖家→低成本→更低价的飞轮效应，造就万亿巨头。", tag: "增长策略" },
-            { icon: "📱", title: "微信的超级应用", content: "微信 12 亿用户，集社交、支付、购物、打车于一体，一个 App 搞定生活。", tag: "生态战略" },
-            { icon: "💰", title: "巴菲特的复利", content: "巴菲特 99% 的财富在 50 岁后获得，复利+长期主义是财富密码。", tag: "投资智慧" },
-            { icon: "📦", title: "宜家的平板包装", content: "宜家平板包装降低 70% 运输成本，让用户自己组装，价格低一半。", tag: "成本控制" },
-            { icon: "🎬", title: "迪士尼的 IP 帝国", content: "迪士尼靠 IP 授权和衍生品赚钱，电影只是入口，授权收入超票房。", tag: "IP 运营" },
-            { icon: "🚀", title: "SpaceX 的回收", content: "SpaceX 火箭回收技术将发射成本降低 90%，彻底改变航天业。", tag: "技术创新" },
-            { icon: "📱", title: "拼多多的下沉", content: "拼多多瞄准下沉市场，用社交裂变 3 年上市，市值超京东。", tag: "市场定位" },
-            { icon: "🎧", title: "Spotify 的订阅", content: "Spotify 用订阅制颠覆音乐产业，用户付费意愿远超想象。", tag: "订阅经济" },
-            { icon: "🏨", title: "Airbnb 的轻资产", content: "Airbnb 无一间房，靠平台模式成为全球最大酒店集团。", tag: "平台经济" },
-            { icon: "📱", title: "TikTok 的算法", content: "TikTok 推荐算法让用户'停不下来'，18 个月用户破 10 亿。", tag: "算法驱动" },
-            { icon: "🛍️", title: "Costco 的会员", content: "Costco 商品毛利仅 14%，靠会员费赚钱，续费率超 90%。", tag: "会员经济" },
-            { icon: "🎮", title: "索尼的生态", content: "索尼 PlayStation 硬件不赚钱，靠游戏销售和订阅盈利。", tag: "生态闭环" }
+            { 
+                icon: "📱", 
+                title: "iPhone 的秘密", 
+                content: "乔布斯把 iPhone 定价 499 美元而非 500 美元，利用'左位效应'让价格看起来更便宜。", 
+                tag: "定价策略",
+                detail: "左位效应（Left-digit effect）是心理学定价策略，消费者更关注价格最左边的数字。499 美元感觉比 500 美元便宜很多，尽管只差 1 美元。这种策略在零售业广泛应用，能显著提升销量。",
+                cases: [
+                    "苹果产品线普遍使用此策略：iPad 499 美元、MacBook 999 美元、Apple Watch 399 美元",
+                    "亚马逊商品定价大量使用 .99 结尾，如 29.99 美元、49.99 美元",
+                    "中国电商平台常用 9.9 元、99 元、199 元等定价吸引用户"
+                ],
+                related: ["心理定价", "锚定效应", "价格感知"]
+            },
+            { 
+                icon: "☕", 
+                title: "星巴克的魔法", 
+                content: "星巴克全球 3 万家门店，年收入超 300 亿，靠的是'第三空间'概念而非咖啡本身。", 
+                tag: "品牌定位",
+                detail: "第三空间（Third Place）指家庭和工作场所之外的社会空间。星巴克创始人霍华德·舒尔茨将这个概念商业化，创造了一个介于家和办公室之间的舒适空间，让人们可以社交、工作、放松。",
+                cases: [
+                    "星巴克店内设计：舒适沙发、免费 Wi-Fi、电源插座，鼓励长时间停留",
+                    "会员体系：星享卡、积分兑换，增加用户粘性和复购率",
+                    "季节性营销：节日限定饮品、城市杯，创造社交话题和收藏价值"
+                ],
+                related: ["体验经济", "场景营销", "用户粘性"]
+            },
+            { 
+                icon: "👟", 
+                title: "耐克的钩子", 
+                content: "耐克的 Swoosh 标志当年只花了 35 美元，如今品牌价值超 240 亿美元。", 
+                tag: "品牌价值",
+                detail: "1971 年，耐克创始人菲尔·奈特找到波特兰州立大学设计系学生卡罗琳·戴维森，支付 35 美元设计了这个标志。Swoosh 代表希腊胜利女神翅膀的羽毛，象征速度、动感和力量。",
+                cases: [
+                    "耐克与乔丹合作：1985 年 Air Jordan 系列，开创球星签名鞋先河",
+                    "Just Do It 口号：1988 年推出，成为全球最知名的品牌口号之一",
+                    "数字化营销：Nike+ 跑步应用、Nike Training Club，从卖产品到卖服务"
+                ],
+                related: ["品牌故事", "IP 合作", "数字化转型"]
+            },
+            { 
+                icon: "🍔", 
+                title: "麦当劳的地产商", 
+                content: "麦当劳本质是房地产公司，利润主要来自门店租金而非汉堡。", 
+                tag: "商业模式",
+                detail: "麦当劳创始人雷·克洛克发现，真正的利润来自房地产而非汉堡。公司购买或租赁黄金地段土地，然后转租给加盟商，赚取租金差价。这种模式让麦当劳成为全球最大的房地产所有者之一。",
+                cases: [
+                    "加盟模式：加盟商支付初始费用+销售额 4% 服务费+4.5% 租金",
+                    "地产投资：麦当劳拥有全球 45% 门店的土地和 70% 门店的建筑",
+                    "资产证券化：将房地产打包成 REITs（房地产投资信托）融资"
+                ],
+                related: ["加盟连锁", "资产运营", "现金流管理"]
+            },
+            { 
+                icon: "🎮", 
+                title: "任天堂的转型", 
+                content: "任天堂 1889 年做扑克牌起家，1970 年代转型游戏，如今市值超 600 亿。", 
+                tag: "企业转型",
+                detail: "任天堂最初生产花札（日本传统纸牌），1960 年代尝试出租车、爱情旅馆等业务失败。1970 年代抓住电子游戏机遇，推出 Game & Watch、红白机，成功转型为游戏巨头。",
+                cases: [
+                    "红白机（1983）：全球销量 6191 万台，拯救美国游戏业",
+                    "Wii（2006）：体感游戏机，吸引非传统玩家，销量超 1 亿台",
+                    "Switch（2017）：家用机+掌机二合一，创造新游戏场景"
+                ],
+                related: ["第二曲线", "蓝海战略", "产品创新"]
+            }
         ];
         
-        // 职场智慧池（15条）
+        // 职场智慧池（带详细信息和案例）
         const wisdomCards = [
-            { icon: "💼", title: "谈判技巧", content: "谈判时让对方先报价，谁先亮底牌谁被动。掌握主动权的关键是'后发制人'。", tag: "沟通" },
-            { icon: "⏰", title: "时间管理", content: "'两分钟法则'：2 分钟内能做的事，立刻做，别拖延。", tag: "效率" },
-            { icon: "🎯", title: "目标设定", content: "SMART 原则：具体、可衡量、可实现、相关性强、有时限。模糊目标=模糊结果。", tag: "规划" },
-            { icon: "🤝", title: "人脉建设", content: "人脉不是认识多少人，而是多少人认可你的价值。先给价值，再求回报。", tag: "社交" },
-            { icon: "📊", title: "数据思维", content: "决策用数据说话，别凭感觉。数据不会撒谎，但会告诉你真相。", tag: "分析" },
-            { icon: "🔄", title: "持续学习", content: "每天 30 分钟学习新技能，一年下来比 90% 的人领先。学习是最好的人力资本投资。", tag: "成长" },
-            { icon: "💡", title: "创新思维", content: "创新不是发明新东西，而是用旧元素组合出新价值。跨界思维是关键。", tag: "创新" },
-            { icon: "🎭", title: "情绪管理", content: "情绪是信号不是敌人。识别情绪背后的需求，才能有效管理。", tag: "情商" },
-            { icon: "📝", title: "向上管理", content: "向上管理不是讨好，而是让上级知道你的价值和困难，争取资源。", tag: "职场" },
-            { icon: "🎪", title: "精力管理", content: "管理精力而非时间。找到你的黄金时段，做最重要的事。", tag: "效率" },
-            { icon: "🔑", title: "关键决策", content: "重大决策用'10-10-10 法则'：10 分钟、10 个月、10 年后怎么看这个决定？", tag: "决策" },
-            { icon: "🎯", title: "专注力", content: "一次只做一件事。多任务处理是效率杀手，专注才是王道。", tag: "效率" },
-            { icon: "🤔", title: "批判性思维", content: "别轻易接受信息，问'证据是什么？''逻辑成立吗？'培养独立思考。", tag: "思维" },
-            { icon: "🌟", title: "个人品牌", content: "你的个人品牌是你离开岗位后别人怎么评价你。让口碑成为你的资产。", tag: "品牌" },
-            { icon: "🚀", title: "快速试错", content: "小步快跑，快速试错。完美是完成的天敌，先做出来再优化。", tag: "执行" }
+            { 
+                icon: "💼", 
+                title: "谈判技巧", 
+                content: "谈判时让对方先报价，谁先亮底牌谁被动。掌握主动权的关键是'后发制人'。", 
+                tag: "沟通",
+                detail: "谈判中，先报价的一方会暴露自己的底线，让对方占据心理优势。让对方先报价，你可以了解对方的预期，然后调整自己的策略。这种'后发制人'策略在薪资谈判、商业合作中尤其有效。",
+                cases: [
+                    "薪资谈判：当 HR 问期望薪资时，反问'这个职位的薪资范围是多少？'",
+                    "商业合作：客户问报价时，先了解对方预算和需求，再给出定制方案",
+                    "采购谈判：让供应商先报价，对比多家后再还价"
+                ],
+                related: ["心理博弈", "信息收集", "议价能力"]
+            },
+            { 
+                icon: "⏰", 
+                title: "时间管理", 
+                content: "'两分钟法则'：2 分钟内能做的事，立刻做，别拖延。", 
+                tag: "效率",
+                detail: "两分钟法则来自戴维·艾伦的《搞定》一书。如果一件事能在两分钟内完成，就立即去做，不要加入待办清单。这个法则能减少心理负担，避免小事堆积，提高执行效率。",
+                cases: [
+                    "邮件回复：简单的邮件立即回复，复杂邮件标记稍后处理",
+                    "文件整理：下载的文件立即分类保存，不要堆在桌面",
+                    "任务拆解：大任务拆成多个两分钟小任务，逐个击破"
+                ],
+                related: ["GTD 方法", "任务分解", "拖延克服"]
+            },
+            { 
+                icon: "🎯", 
+                title: "目标设定", 
+                content: "SMART 原则：具体、可衡量、可实现、相关性强、有时限。模糊目标=模糊结果。", 
+                tag: "规划",
+                detail: "SMART 原则是目标管理的经典框架：Specific（具体）、Measurable（可衡量）、Achievable（可实现）、Relevant（相关）、Time-bound（有时限）。清晰的目标能提供方向、衡量进度、增强动力。",
+                cases: [
+                    "错误目标：'提高销售额' → SMART 目标：'Q2 通过新渠道将销售额提升 20%'",
+                    "错误目标：'学习英语' → SMART 目标：'6 个月内通过雅思 6.5 分'",
+                    "错误目标：'减肥' → SMART 目标：'3 个月内通过运动和控制饮食减重 5 公斤'"
+                ],
+                related: ["OKR 管理", "绩效评估", "进度跟踪"]
+            },
+            { 
+                icon: "🤝", 
+                title: "人脉建设", 
+                content: "人脉不是认识多少人，而是多少人认可你的价值。先给价值，再求回报。", 
+                tag: "社交",
+                detail: "有效的人脉基于价值交换，而非单纯认识。先为他人提供价值（分享知识、介绍资源、帮助解决问题），建立信任和好感，当你需要帮助时，别人更愿意回报。",
+                cases: [
+                    "行业分享：在专业社区分享经验，吸引同频人脉",
+                    "资源对接：为朋友介绍合适的合作伙伴，成为连接器",
+                    "主动帮助：看到他人需求时主动提供帮助，不求即时回报"
+                ],
+                related: ["弱连接", "社交资本", "互惠原则"]
+            },
+            { 
+                icon: "📊", 
+                title: "数据思维", 
+                content: "决策用数据说话，别凭感觉。数据不会撒谎，但会告诉你真相。", 
+                tag: "分析",
+                detail: "数据思维是用客观数据替代主观直觉做决策。通过收集、分析数据，发现规律、验证假设、预测趋势。在信息时代，数据驱动的决策更准确、更高效。",
+                cases: [
+                    "产品优化：通过用户行为数据发现功能使用率，优化产品设计",
+                    "营销投放：分析不同渠道的 ROI，调整预算分配",
+                    "团队管理：用绩效数据评估员工表现，而非主观印象"
+                ],
+                related: ["数据分析", "A/B 测试", "数据可视化"]
+            }
         ];
         
         // 随机抽取指定数量的不重复项
@@ -141,12 +281,12 @@
             return shuffled.slice(0, count);
         }
         
-        // 渲染卡片到指定容器
+        // 渲染卡片到指定容器（添加点击事件）
         function renderCards(data, containerId, count) {
             const container = document.getElementById(containerId);
             const selected = getRandomItems(data, count);
-            container.innerHTML = selected.map(item => `
-                <div class="card">
+            container.innerHTML = selected.map((item, index) => `
+                <div class="card" onclick="showDetail(${JSON.stringify(item).replace(/"/g, '&quot;')})">
                     <div class="card-icon">${item.icon}</div>
                     <h3>${item.title}</h3>
                     <p>${item.content}</p>
@@ -155,13 +295,55 @@
             `).join('');
         }
         
+        // 显示详情模态框
+        function showDetail(item) {
+            document.getElementById('modal-icon').textContent = item.icon;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-tag').textContent = item.tag;
+            document.getElementById('modal-content').textContent = item.detail || item.content;
+            
+            // 填充实战案例
+            const casesList = document.getElementById('modal-cases');
+            if (item.cases && item.cases.length > 0) {
+                casesList.innerHTML = item.cases.map(caseText => 
+                    `<li><strong>案例：</strong>${caseText}</li>`
+                ).join('');
+            } else {
+                casesList.innerHTML = '<li>暂无案例数据</li>';
+            }
+            
+            // 填充相关知识点
+            const relatedTags = document.getElementById('modal-related');
+            if (item.related && item.related.length > 0) {
+                relatedTags.innerHTML = item.related.map(tag => 
+                    `<span class="related-tag">${tag}</span>`
+                ).join('');
+            } else {
+                relatedTags.innerHTML = '<span class="related-tag">暂无相关标签</span>';
+            }
+            
+            // 显示模态框
+            document.getElementById('detail-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // 更新 URL hash
+            window.location.hash = `detail-${item.title.replace(/\s+/g, '-')}`;
+        }
+        
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('detail-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            window.location.hash = '';
+        }
+        
         // 显示随机卡片
         function showRandomCard() {
             const allCards = [...businessFacts, ...wisdomCards];
             const random = allCards[Math.floor(Math.random() * allCards.length)];
             const card = document.getElementById('random-card');
             card.style.display = 'block';
-            card.innerHTML = `<div class="card" style="max-width: 400px; margin: 0 auto; text-align: left;">
+            card.innerHTML = `<div class="card" onclick="showDetail(${JSON.stringify(random).replace(/"/g, '&quot;')})" style="max-width: 400px; margin: 0 auto; text-align: left;">
                 <div class="card-icon">${random.icon}</div>
                 <h3>${random.title}</h3>
                 <p>${random.content}</p>
@@ -173,6 +355,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             renderCards(businessFacts, 'facts-grid', 3);
             renderCards(wisdomCards, 'wisdom-grid', 3);
+            
+            // 点击模态框外部关闭
+            document.getElementById('detail-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // ESC 键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
