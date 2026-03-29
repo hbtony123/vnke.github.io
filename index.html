@@ -7,11 +7,6 @@
     <meta name="description" content="VNKE - 一分钟商业智慧。用娱乐化的方式传递商业洞察、职场智慧和创业故事。每天一分钟，让你的认知升级。">
     <meta name="keywords" content="商业知识，职场智慧，创业故事，商业冷知识，一分钟课堂，知识娱乐，VNKE">
     <meta name="author" content="VNKE">
-    <meta property="og:title" content="VNKE - 一分钟商业智慧">
-    <meta property="og:description" content="用娱乐化的方式传递商业洞察，每天一分钟，让你的认知升级。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vnke.com">
-    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
     <style>
         :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #10b981; --accent: #f59e0b; --dark: #1e293b; --light: #f8fafc; --gray: #64748b; --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
@@ -27,32 +22,32 @@
         .cta-button { display: inline-block; padding: 1rem 2.5rem; background: white; color: var(--primary); font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: fadeInUp 0.8s ease 0.6s both; }
         .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .daily-quote { background: white; padding: 4rem 2rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
-        .quote-text { font-size: 1.5rem; font-style: italic; color: var(--dark); margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .quote-author { color: var(--gray); font-size: 1rem; }
+        .daily-quote { background: white; padding: 2rem 1.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
+        .quote-text { font-size: 1.2rem; font-style: italic; color: var(--dark); margin-bottom: 0.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .quote-author { color: var(--gray); font-size: 0.9rem; }
         .content-section { padding: 2rem 1.5rem; max-width: 900px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 0.8rem; color: var(--dark); }
         .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 1.5rem; font-size: 0.9rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
         .card { background: white; border-radius: 10px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s ease; cursor: pointer; position: relative; overflow: hidden; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--gradient); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .card-icon { font-size: 2rem; margin-bottom: 0.6rem; }
         .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--dark); }
         .card p { color: var(--gray); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.6rem; }
         .card-tag { display: inline-block; padding: 0.2rem 0.6rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 12px; font-size: 0.7rem; font-weight: 500; }
-        .random-section { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
-        .random-btn { background: var(--gradient); color: white; border: none; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+        .random-section { text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .random-btn { background: var(--gradient); color: white; border: none; padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
         .random-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
-        #random-card { margin-top: 2rem; display: none; }
-        footer { background: var(--dark); color: white; text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
+        #random-card { margin-top: 1.5rem; display: none; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; }
         .footer-content { max-width: 600px; margin: 0 auto; }
-        .footer-logo { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
-        .footer-text { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
-        .social-link { color: white; font-size: 1.5rem; transition: all 0.3s ease; text-decoration: none; }
+        .footer-logo { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .footer-text { color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+        .social-links { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+        .social-link { color: white; font-size: 1.3rem; transition: all 0.3s ease; text-decoration: none; }
         .social-link:hover { transform: scale(1.2); color: var(--accent); }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .grid { grid-template-columns: 1fr; } .quote-text { font-size: 1.2rem; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .section-title { font-size: 1.6rem; } .grid { grid-template-columns: 1fr; } .quote-text { font-size: 1.1rem; } }
     </style>
 </head>
 <body>
@@ -82,7 +77,7 @@
         <h2 class="section-title">🎲 随机知识卡片</h2>
         <p class="section-subtitle">不知道看什么？点击获取随机惊喜！</p>
         <button class="random-btn" onclick="showRandomCard()">🎯 给我来个惊喜</button>
-        <div id="random-card" style="margin-top: 2rem; display: none;"></div>
+        <div id="random-card"></div>
     </section>
     <footer>
         <div class="footer-content">
@@ -97,7 +92,7 @@
         </div>
     </footer>
     <script>
-        // 扩充商业冷知识池（20+ 条）
+        // 商业冷知识池（20条）
         const businessFacts = [
             { icon: "📱", title: "iPhone 的秘密", content: "乔布斯把 iPhone 定价 499 美元而非 500 美元，利用'左位效应'让价格看起来更便宜。", tag: "定价策略" },
             { icon: "☕", title: "星巴克的魔法", content: "星巴克全球 3 万家门店，年收入超 300 亿，靠的是'第三空间'概念而非咖啡本身。", tag: "品牌定位" },
@@ -120,7 +115,8 @@
             { icon: "🛍️", title: "Costco 的会员", content: "Costco 商品毛利仅 14%，靠会员费赚钱，续费率超 90%。", tag: "会员经济" },
             { icon: "🎮", title: "索尼的生态", content: "索尼 PlayStation 硬件不赚钱，靠游戏销售和订阅盈利。", tag: "生态闭环" }
         ];
-        // 扩充职场智慧池（15+ 条）
+        
+        // 职场智慧池（15条）
         const wisdomCards = [
             { icon: "💼", title: "谈判技巧", content: "谈判时让对方先报价，谁先亮底牌谁被动。掌握主动权的关键是'后发制人'。", tag: "沟通" },
             { icon: "⏰", title: "时间管理", content: "'两分钟法则'：2 分钟内能做的事，立刻做，别拖延。", tag: "效率" },
@@ -138,11 +134,14 @@
             { icon: "🌟", title: "个人品牌", content: "你的个人品牌是你离开岗位后别人怎么评价你。让口碑成为你的资产。", tag: "品牌" },
             { icon: "🚀", title: "快速试错", content: "小步快跑，快速试错。完美是完成的天敌，先做出来再优化。", tag: "执行" }
         ];
+        
         // 随机抽取指定数量的不重复项
         function getRandomItems(arr, count) {
             const shuffled = [...arr].sort(() => 0.5 - Math.random());
             return shuffled.slice(0, count);
         }
+        
+        // 渲染卡片到指定容器
         function renderCards(data, containerId, count) {
             const container = document.getElementById(containerId);
             const selected = getRandomItems(data, count);
@@ -155,6 +154,8 @@
                 </div>
             `).join('');
         }
+        
+        // 显示随机卡片
         function showRandomCard() {
             const allCards = [...businessFacts, ...wisdomCards];
             const random = allCards[Math.floor(Math.random() * allCards.length)];
@@ -166,30 +167,13 @@
                 <p>${random.content}</p>
                 <span class="card-tag">${random.tag}</span>
             </div>`;
-            card.style.display = 'block';
         }
-    </script>
-</body>
-</html> `<div class="card" style="max-width: 400px; margin: 0 auto; text-align: left;">
-                <div class="card-icon">${random.icon}</div>
-                <h3>${random.title}</h3>
-                <p>${random.content}</p>
-                <span class="card-tag">${random.tag}</span>
-            </div>`;
-        }
-    </script>
-</body>
-</html>            `<div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
-                <div class="card-icon">${random.icon}</div>
-                <h3>${random.title}</h3>
-                <p>${random.content}</p>
-                <span class="card-tag">${random.tag}</span>
-            </div>`;
-            card.style.display = 'block';
-        }
-        // 每次刷新显示 3 个随机内容
-        renderCards(businessFacts, 'facts-grid', 3);
-        renderCards(wisdomCards, 'wisdom-grid', 3);
+        
+        // 页面加载时渲染内容
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCards(businessFacts, 'facts-grid', 3);
+            renderCards(wisdomCards, 'wisdom-grid', 3);
+        });
     </script>
 </body>
 </html>
